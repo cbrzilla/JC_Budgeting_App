@@ -1,15 +1,18 @@
 # JCBudgeting User Guide
 
-## What JCBudgeting Does
-JCBudgeting is a budgeting program built around a forward-looking budget sheet. It helps you:
+## What JC Budgeting Does
+Jumper Cable (JC) Budgeting helps you track, plan, and forecast your budget across multiple accounts, incomes, bills, savings, debts, expenses, and transactions together in one budget workspace.
 
-- manage accounts, income, expenses, savings goals, debts, and transactions
-- plan future periods instead of only looking backward
-- see budget health in charts and flow views
-- work locally or connect to a JC Server
-- keep working from an offline cache if the server becomes unavailable
+JC Budgeting is built around a forward-looking budget sheet. Instead of only recording the past, it helps you plan future periods and understand how your choices affect balances, savings, debt, and overall sustainability.
 
-Jumper Cable (JC) Budgeting helps you track, plan, and forecast your budget across multiple accounts, incomes, bills, savings, debts, and expenses together in one budget workspace.
+Main capabilities include:
+
+- managing accounts, income, savings, debts, expenses, and transactions
+- planning future budget periods in a spreadsheet-style budget sheet
+- comparing calculated amounts, linked transaction amounts, and manual overrides
+- viewing account, savings, debt, and distribution visuals in `Overview`
+- working locally, through a local server, or through an external JC Server
+- continuing from an offline cache if a server becomes temporarily unavailable
 
 ## Main Areas Of The Program
 The desktop app is organized into these main tabs:
@@ -25,82 +28,174 @@ The desktop app is organized into these main tabs:
 - `Data`
 - `Settings`
 
-Each area is described below.
-
 ## Getting Started
 
-### Local Database Workflow
-Use this when you want everything on one machine.
+### First-Time Launch
+On first launch, JC Budgeting can show a guided welcome tour.
 
-1. Open `JCBudgeting`.
-2. Go to `Settings`.
-3. Set `Database Source` to `Local Only (No External Access)`.
-4. Under `Current Database`, use `Load` to open an existing `.jcbdb` file or `Create New` to make a new one.
-5. Set your budget timeline:
-   - `Budget Start`
+The startup tour:
+
+- begins in `Settings`
+- explains the database source choices
+- explains how to create, load, or connect to a database
+- explains theme customization and the main workflow
+
+If you skip or complete the tour, it should not automatically reappear. You can still reopen it later from the `Help` area in `Settings`.
+
+### Important Setup Rule
+You must have an active database before the main planning tabs can be used.
+
+If there is no active database:
+
+- `Settings` stays usable
+- the other tabs are blocked with a `No Active Database` overlay
+- the budget status banner shows `No Active Database`
+
+You also need at least one account before certain tabs can be used normally. If no accounts exist yet, dependent tabs show a `No Accounts Created Yet` overlay.
+
+## Database Source Options
+The `Settings` tab uses `Database Source` to choose where your budget data comes from.
+
+There are three modes:
+
+- `Local Only`: stores the database on this computer only
+- `Local Server`: uses a JC Server running on this same computer so other devices can connect to it
+- `External Server`: connects to a JC Server running somewhere else
+
+### Local Only
+Use this when you want the entire budget to stay on one computer with no server access from other devices.
+
+Typical workflow:
+
+1. Open `Settings`.
+2. Set `Database Source` to `Local Only`.
+3. Use `Load` to open an existing `.jcbdb` file or `Create New` to make a new one.
+4. Set the budget timeline:
+   - `Budget Start Date`
    - `Budget Period`
-   - `Years`
-6. Start adding accounts, income, savings, debts, expenses, and transactions.
+   - `Budget Years`
+5. Start adding your budgeting data.
 
-### Server Workflow
-Use this when the database lives on a JC Server and the client connects to it.
+### Local Server
+Use this when you want the client and the server to run on the same machine.
 
-1. Start the JC Server.
-2. Use the server page at `http://<server-host>:5099/server`.
-3. On the server page, create or select the database the server should use.
+Typical behavior:
+
+- `Server Address` is usually `localhost`
+- the client can try to start the local server automatically
+- if the local server is not running, the app can show `Start Server`
+- if the server is not installed yet, the app can show `Install Server`
+- if you already had a local database active, the app can transfer it into the local server flow when needed
+
+In this mode, the server controls the shared budget data similarly to an external server.
+
+### External Server
+Use this when your data is hosted by a JC Server on another computer or device.
+
+Typical workflow:
+
+1. Start the standalone JC Server.
+2. Open the server web page at `http://<server-host>:5099/server`.
+3. Create or select the active database on the server.
 4. Open the desktop client.
-5. Go to `Settings`.
-6. Set `Database Source` to `External Host`.
-7. Enter the server host name or IP address and port.
-8. Click `Connect` if needed.
-9. Use `Open Server Page` anytime you want to reopen the server page.
+5. Set `Database Source` to `External Server`.
+6. Enter `Server Address` and `Port`.
+7. Connect to the server.
 
 Important:
 
-- The server page is for choosing or creating the server database, reviewing server settings, viewing server logs, and checking standalone server updates.
-- `Upload DB` and `Download DB` are done from the desktop client in `Settings`.
+- the server web page is used for server setup, live status, logs, and update information
+- database upload and download are done from the desktop client, not the server web page
 
-### Hosted Server On This Computer
-This mode is useful when you want the desktop app and a server running on the same machine.
+## Guided Tours And Help
+JC Budgeting includes several guided tours.
 
-- Choose `Local (External Access Allowed)` in `Settings`.
-- The desktop app hosts the currently loaded local database so phones or other clients can connect to this computer.
-- If you switch back to `Local Only (No External Access)`, the hosted background server should stop.
-- Other clients can then connect to this computer.
+### Startup Tour
+The startup tour gives a high-level walkthrough of:
 
-## First-Time Guidance
-On first use, JCBudgeting can show a guided tour to help explain the main tabs and setup flow.
+- what the app does
+- where to begin
+- database source choices
+- local versus server setup
+- theme customization
+- the main tab order
 
-- The startup tour begins in `Settings` so you can create, load, or connect to a database first.
-- Several editor tabs also have their own detailed tours the first time you create your first item there.
-- You can reopen tours later with the `Show Guided Tour` or `Show Tour` buttons where available.
+### Contextual Editor Tours
+Detailed editor tours can appear the first time you create your first item in certain tabs:
 
-## Understanding Server Status
-When you are using a server, the app shows a status pill in the footer and related status text in the budget area.
+- `Accounts`
+- `Income`
+- `Savings`
+- `Debts`
+- `Expenses`
+- `Transactions`
 
-Possible states:
+These tours explain the key inputs in the editor and how those values affect the budget.
 
-- `Online`
-- `Offline`
-- `Online, but no database loaded`
+You can reopen them later with `Show Tour` where available. The button is disabled for tabs that need an item selected first.
 
-If the server goes offline during a session, the app can offer:
+### Help Area
+The `Settings` tab includes a `Help` area where you can:
+
+- reopen the startup guided tour
+- check for client updates
+- open the client repository link for more information
+
+## Server Status And Compatibility
+When a server mode is active, JC Budgeting shows a server status indicator in the footer and related status text in the budget area.
+
+Possible states include:
+
+- `JC Server Online`
+- `JC Server Offline`
+- `JC Server No Database`
+- `JC Server Version Mismatch`
+
+If the server version is incompatible, the desktop client blocks the connection before reading or writing budget data.
+
+The compatibility check compares:
+
+- client version
+- client compatibility series
+- server version
+- server minimum supported client version
+
+## Updates
+JC Budgeting can check GitHub-hosted releases for updates.
+
+### Client Update Check
+The desktop client can check the client download repo from the `Help` area in `Settings`.
+
+### Server Update Check
+Standalone servers can check for updates from the server web page.
+
+Umbrel-managed servers use the Umbrel update flow instead of the standalone server flow.
+
+## Offline Mode
+If you are using a server and the server becomes unavailable, JC Budgeting can use an offline cache.
+
+If the server drops during use, the client can offer:
 
 - `Retry Server`
 - `Switch To Offline`
 - `Close Software`
 
-If you switch to offline mode and later reconnect to the server, use `Upload DB` to send your offline changes back to the server database.
+Important offline behavior:
 
-## Versions And Updates
-The desktop client checks the JC Server version before connecting. If the server requires a newer or incompatible client, the client blocks the connection before reading or writing budget data.
+- switching to offline mode by itself does not mark the cache as needing upload
+- the cache is marked for upload only after actual offline edits are made
+- when the server becomes available again, the client can prompt you to upload local offline changes
 
-The desktop app can check the client download repo for updates from the `Settings` help area. Standalone servers that are not managed by Umbrel can check the same download repo from the server page at `http://<server-host>:5099/server`.
+Recommended workflow after offline work:
+
+1. Reconnect to the server.
+2. Open `Settings`.
+3. Use `Upload DB` to send the updated offline database back to the server.
 
 ## Overview Tab
-The `Overview` tab gives you a high-level picture of the current budget period and future trends.
+The `Overview` tab gives a high-level picture of the current and future budget.
 
-It includes these sub-sections:
+Main sections include:
 
 - `Summary`
 - `Budget Distribution`
@@ -108,7 +203,7 @@ It includes these sub-sections:
 - `Comparison`
 
 ### Summary
-Shows major budget metrics such as:
+Shows major measures such as:
 
 - income
 - planned outflow
@@ -118,162 +213,165 @@ Shows major budget metrics such as:
 - net flow
 - current debt balance
 
-It also includes charts for:
+It also includes projected charts for:
 
-- projected account balances
+- account balances
 - savings balances
-- projected debt balances
+- debt balances
 
 ### Budget Distribution
-Shows a Sankey-style flow diagram of how budget money moves through the budget.
+Shows a Sankey-style distribution view of how money moves through the budget.
 
-Use this to understand:
+Use it to see:
 
-- where money is coming from
-- where money is being assigned
-- how large each flow is relative to others
+- where money is sourced
+- where money is assigned
+- relative flow size between categories
 
 ### Savings
-Shows a savings flow diagram so you can see:
+Shows a savings Sankey view so you can understand:
 
 - starting balances
-- contributions
-- expenses funded from savings
-- remaining savings balances
+- planned contributions
+- spending funded from savings
+- projected remaining savings balances
 
 ### Comparison
-Compares the selected period to prior matching periods so you can quickly see whether planned amounts are above, below, or near historical averages.
+Compares the selected period to prior matching periods so you can see whether current planned amounts are above, below, or near historical averages.
 
 ## Budget Tab
 The `Budget` tab is the core planning sheet.
 
 It lets you:
 
-- view the budget across multiple periods
-- scroll through future periods
-- see grouped rows for accounts, income, expenses, savings, and debts
-- use sticky account rows for easier reading
-- edit a budget cell directly from the sheet
+- view multiple periods at once
+- scroll through current and future periods
+- work with grouped rows for accounts, income, savings, debts, and expenses
+- use hidden rows without losing visibility of hidden counts
+- open a budget cell editor directly from the sheet
 - export the budget
 
-At the top of the budget area, a color key explains the budget text colors:
+### Budget Text Color Key
+The top budget area includes a color key for text in the budget sheet:
 
-- `Blue`: has transactions linked
-- `Purple`: mixture of linked transactions and manual adjustments
-- `Red`: manually overriden
-- `Black` or `White` (depending on theme): calculated
+- `Blue`: Has Transactions Linked
+- `Purple`: Mixture of Linked Transactions & Manual Adjustments
+- `Red`: Manually Overriden
+- `Black` or `White` depending on theme: Calculated
 
 ### Budget Cell Editing
-When you click a budget cell, the editor lets you adjust how that value is controlled.
+When you click a budget cell, the editor lets you control how the value behaves.
 
-Depending on the item, you can:
+Depending on the row type, you can:
 
 - manually set a value
 - use a calculated value
-- add or subtract an adjustment
-- mark items paid when applicable
+- add an adjustment
+- mark an item paid when applicable
 - save notes
-- clear the override and return to the normal behavior
+- reset the override
 
-Explicit zeros are preserved when you intentionally set them, including calculated zero values.
+Explicit zero values are preserved when you intentionally set them, including calculated zero values.
 
-### Hidden Items
-Hidden items are still tracked clearly in the budget:
+### Hidden Rows
+Hidden budget items are still represented clearly:
 
-- hidden rows are labeled with `(Hidden)` when relevant
-- group labels show hidden counts
-- parent sections stay visible even if only hidden children remain
+- hidden rows are labeled with `(Hidden)` where relevant
+- parent labels show hidden counts
+- parent sections remain visible even if only hidden children remain
 
 ## Accounts Tab
-Use `Accounts` to manage the funding sources that power the budget.
+Use `Accounts` to define the funding sources used throughout the budget.
 
-Typical fields include:
+Common fields include:
 
-- account name
+- name
 - account type
 - category
 - starting balance
+- hidden
+- active
+- login link
 - notes
 
-Accounts are used throughout the rest of the app for budgeting and funding references.
-
-Until at least one account exists, the dependent tabs stay blocked:
-
-- `Income`
-- `Savings`
-- `Debts`
-- `Expenses`
-- `Transactions`
+Accounts are the foundation for the rest of the planning flow. Until at least one account exists, several other tabs stay blocked.
 
 ## Income Tab
 Use `Income` to define recurring or manual income sources.
 
-Income supports patterns such as:
+Income supports timing patterns such as:
 
 - weekly
 - bi-weekly
-- monthly on day
-- yearly on date
-- same as another item
-- manually entered
+- monthly
+- yearly
+- same-as patterns where supported
+- manual entry
 
-You can also control when each item starts and stops affecting the budget.
-
-Income stays unavailable until at least one account exists.
+Income also supports timing controls such as start and end behavior so income can begin or stop affecting future periods.
 
 ## Savings Tab
-Use `Savings` for savings goals, sinking funds, emergency funds, allowances, and similar buckets.
+Use `Savings` for savings goals, sinking funds, reserve buckets, and similar planned balances.
 
-Savings items can include:
+Savings records can include:
 
 - description
 - category
-- funding account
-- deposit schedule
+- funding source
+- contribution amount
+- frequency
+- start date
 - goal amount
-- target date
-- hidden or active status
+- goal date
+- hidden
+- active
+- login link
 - notes
 
-Savings appear in both the budget sheet and the overview savings flow.
-
-Savings stays unavailable until at least one account exists.
+Savings feed both the budget sheet and the overview savings visual.
 
 ## Debts Tab
-Use `Debts` to manage loans, cards, and other liabilities.
+Use `Debts` to manage liabilities such as loans, cards, and other balances owed.
 
 Debt records can include:
 
 - description
-- lender
+- lender or institution
 - debt type
+- loan type
 - APR
 - current balance
 - original principal
-- minimum payment
-- due information
+- payment amount
+- frequency
+- due timing
 - funding account
+- hidden
+- active
+- login link
 - notes
 
-The app uses debt information to project balances and show debt trends in `Overview`.
-
-Debts stays unavailable until at least one account exists.
+Debt settings affect balance projections and debt visuals in `Overview`.
 
 ## Expenses Tab
-Use `Expenses` to manage recurring and manual bills or spending categories.
+Use `Expenses` to manage recurring bills and flexible spending categories.
 
-Expenses support:
+Expense records can include:
 
 - description
 - category
 - amount
-- cadence
-- due day or date
-- start and end timing
+- cadence or frequency
+- due timing
+- start or stop timing
 - funding source
-- same-as relationships
-- hidden or active status
+- same-as relationships where applicable
+- hidden
+- active
+- login link
 - notes
+
+Categories can be selected from existing choices, and you can also type your own category text when needed.
 
 Expenses can be funded from:
 
@@ -281,148 +379,164 @@ Expenses can be funded from:
 - savings
 - debts
 
-Those funding choices affect the budget flow and savings flow diagrams.
-
-Expenses stays unavailable until at least one account exists.
+Those choices affect the budget and overview distribution flows.
 
 ## Transactions Tab
-Use `Transactions` to import and assign actual transaction activity.
+Use `Transactions` to import and assign real-world activity.
 
-Key features:
+Main features include:
 
-- import transactions
-- view source, date, description, amount, notes
-- assign a transaction to one or more budget items
-- use quick assign where supported
-- see unlinked or split assignments clearly
+- importing transaction files
+- reviewing source, date, description, amount, and notes
+- assigning transactions to one or more budget items
+- using quick assign where supported
+- tracking split assignments clearly
 
-Import note:
+Important import note:
 
-- Because each financial institution can export transactions differently, JC Budgeting expects negative amounts as debits and positive amounts as credits.
-- You may need to adjust the import file before importing so it matches that format.
-
-This area is especially useful for tying real-world activity back to the budget plan.
-
-Transactions stays unavailable until at least one account exists.
+- JC Budgeting expects negative amounts as debits and positive amounts as credits
+- some financial institutions export data differently, so you may need to edit the file before import so it matches that format
 
 ## Data Tab
 The `Data` tab is a raw read-only database inspection area.
 
 Use it to:
 
-- view database tables directly
-- inspect saved rows and values
-- verify what was actually written to the database
+- inspect database tables
+- review saved rows directly
+- confirm what was actually written to the database
 
-This is mainly for troubleshooting and advanced checking.
+This is mainly useful for troubleshooting and advanced verification.
 
 ## Settings Tab
-The `Settings` tab controls how the app connects, where data comes from, and how the budget timeline is defined.
+The `Settings` tab controls connection mode, database actions, timeline settings, theme choices, and help.
 
-Main settings include:
+Main areas include:
 
-- database source
-- external host address
-- external host port
-- open server setup
-- upload DB
-- download DB
-- current database message
-- local load or backup actions
-- budget start date
-- budget period
-- number of years
-- theme
-- theme color
+- `Database Source`
+- server connection details
+- current database status message
+- load, create, backup, upload, and download actions
+- budget timeline settings
+- theme and accent color settings
+- help and update-check options
 
-`Database Source` has three modes:
+### Database Actions
+Depending on the selected mode, `Settings` can provide:
 
-- `Local Only (No External Access)`: keeps the database on this computer only
-- `Local (External Access Allowed)`: keeps the database on this computer and hosts it for other devices
-- `External Host`: connects to an existing JC Server
+- `Load`
+- `Create New`
+- `Backup`
+- `Connect`
+- `Open Server Page`
+- `Upload DB`
+- `Download DB`
+- `Install Server`
+- `Start Server`
+- `Shut Down Server`
 
-If no active database is loaded, `Settings` stays usable and the other tabs are blocked until you finish setup.
+The current database display is a status/message field rather than an editable text field.
 
-## Uploading And Downloading Databases
-When using a server connection:
+### Timeline Settings
+The budget timeline is defined by:
 
-- `Upload DB` sends a local `.jcbdb` file from the client to the server
-- `Download DB` pulls the currently active server database down to the client machine
+- `Budget Period`
+- `Budget Start Date`
+- `Budget Years`
 
-This is especially useful when:
+When you are connected through a server mode, these settings are controlled by the active server database.
 
-- moving work between local and server environments
-- restoring a copy
-- uploading offline work back to the server later
+### Theme Settings
+The `Settings` tab also includes theme customization options such as:
 
-## Offline Mode
-If the server becomes unavailable and you have a cached copy, JCBudgeting can switch to offline mode.
+- light or dark theme
+- accent or theme color choices
+- animation behavior
 
-Important behavior:
+## Server Web Page
+The standalone JC Server includes a browser-based server page at:
 
-- switching to offline mode alone does not mark the cache as needing upload
-- the cache is marked for upload only after actual offline changes are made
-- when the server becomes available again, the app can prompt you to upload offline changes
-- the unavailable popup includes a `Close Software` option
+`http://<server-host>:5099/server`
 
-Recommended workflow after offline work:
+The server page can show:
 
-1. Reconnect to the server.
-2. Go to `Settings`.
-3. Use `Upload DB` to send the updated offline database back to the server.
+- current active database
+- primary access address
+- setup/server page address
+- client download link
+- live server log output
+- server version and update information
+- copyright and usage notices
 
-## Logs
+Use the server page to:
+
+- create or select the server database
+- review server settings
+- confirm the address clients should use
+- monitor runtime activity and logs
+
+## Logging
 Both the desktop app and the server can write logs for troubleshooting.
 
-Look for a `Logs` folder near the running application.
+Look for a `Logs` folder near the running application or installed app data location.
 
 Typical uses:
 
 - checking startup failures
-- checking server connection issues
+- checking connection or compatibility issues
 - reviewing runtime errors
+- debugging deployment-specific issues
 
 ## Tips For New Users
 
-- Start in `Settings` and get the database source and active database working before trying to enter other data.
-- Set up `Accounts`, `Income`, `Savings`, `Debts`, and `Expenses` before doing deep budget edits.
-- Use `Overview` to validate whether the budget still makes sense after major changes.
-- Use the `Transactions` tab regularly so actual activity stays tied to the plan.
-- If you are sharing a budget on another machine, use `External Host` mode instead of pointing multiple people at the same file directly.
-- If you run the Linux server from a shared or mounted folder, keep the live database itself in a normal local Linux folder to avoid SQLite write issues.
+- Start in `Settings` and get the active database working before entering data.
+- Create accounts first, because several other tabs depend on them.
+- Use the guided tours when they appear, especially on first setup and first item creation.
+- Use `Overview` to confirm your plan still makes sense after major edits.
+- Use `Transactions` regularly so actual activity stays tied to the planned budget.
+- If several devices need to share the same budget, use `Local Server` or `External Server` instead of pointing multiple clients directly at one file.
+- On Linux, keep live SQLite databases in a normal local filesystem path instead of certain shared or mounted VM folders to avoid SQLite read-only or disk I/O problems.
 
 ## Troubleshooting
 
-### The client says the server is online but no database is loaded
-Open the server setup page and create or select a database for the server.
+### The client says no active database is loaded
+Go to `Settings` and create, load, or connect to a database.
 
 ### The other tabs are blocked
 
-- If the message says `No Active Database`, go to `Settings` and create, load, or connect to a database.
-- If the message says `No Accounts Created Yet`, go to `Accounts` and create an account first.
+- If the overlay says `No Active Database`, finish database setup in `Settings`
+- If the overlay says `No Accounts Created Yet`, create an account in `Accounts` first
+
+### The server says it is online but no database is loaded
+Open the server page and create or select a database for the server.
 
 ### The server cannot be reached
 
 - verify the server is running
-- verify the host/IP and port in `Settings`
-- make sure the machine firewall allows the chosen port
-- use `Retry Server` or switch to offline mode if needed
+- verify `Server Address` and `Port`
+- make sure the machine firewall allows the selected port
+- use `Retry Server`, `Switch To Offline`, or `Close Software` as needed
 
-### My offline changes are not on the server yet
+### I made offline changes and the server does not have them yet
 Reconnect to the server and use `Upload DB` from the client.
 
-### I want to inspect exactly what is in the database
-Use the `Data` tab and load the database tables.
+### I want to inspect the raw saved data
+Use the `Data` tab to inspect the database tables directly.
+
+### The client says there is a server version mismatch
+Update the client and/or server so the client meets the server's minimum compatible version requirements.
 
 ## Quick Start Checklist
 
-1. Create or connect to a database.
-2. Confirm the budget timeline in `Settings`.
-3. Add accounts.
-4. Add income.
-5. Add savings items.
-6. Add debts.
-7. Add expenses.
-8. Review the `Budget` tab.
-9. Review the `Overview` tab.
-10. Import and assign transactions as needed.
+1. Open `Settings`.
+2. Choose the correct `Database Source`.
+3. Create, load, or connect to a database.
+4. Confirm the budget timeline settings.
+5. Add accounts.
+6. Add income.
+7. Add savings items.
+8. Add debts.
+9. Add expenses.
+10. Review the `Budget` tab.
+11. Review the `Overview` tab.
+12. Import and assign transactions as needed.

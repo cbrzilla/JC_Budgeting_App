@@ -55,3 +55,13 @@ This repo contains downloadable builds for the desktop client and the standalone
 
 - Client installs and downloads: https://github.com/cbrzilla/JC_Budgeting_Client
 - Umbrel server repo: https://github.com/cbrzilla/JC_Budgeting_Umbrel
+
+## Support This Project
+
+&#x1F496; Support this project
+
+If you find this project useful, consider supporting development!
+
+Your support helps fund new features, bug fixes, and ongoing maintenance.
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000)](https://www.buymeacoffee.com/cbrzilla)
