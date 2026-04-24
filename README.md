@@ -58,10 +58,9 @@ This repo contains downloadable builds for the desktop client and the standalone
 
 ## Support This Project
 
-&#x1F496; Support this project
-
 If you find this project useful, consider supporting development!
 
 Your support helps fund new features, bug fixes, and ongoing maintenance.
+Please do not feel the need to donate if you are trying to get out of debt (put that towards paying off your debts!)
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000)](https://www.buymeacoffee.com/cbrzilla)
