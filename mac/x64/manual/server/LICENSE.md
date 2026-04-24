@@ -22,6 +22,3 @@ fitness for a particular purpose, and noninfringement. In no event shall the
 author be liable for any claim, damages, or other liability, whether in an
 action of contract, tort, or otherwise, arising from, out of, or in connection
 with the software or the use or other dealings in the software.
-
-For permissions or questions, visit:
-https://github.com/cbrzilla/JC_Budgeting_Client

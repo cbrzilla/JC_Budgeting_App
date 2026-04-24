@@ -6,7 +6,7 @@ Key components:
 1. Avalonia
 - Website: https://avaloniaui.net/
 - License: MIT
-- Source: https://avaloniaui.net/legal-center/avalonia-license
+- Source: https://github.com/AvaloniaUI/Avalonia
 
 2. SQLite
 - Website: https://sqlite.org/

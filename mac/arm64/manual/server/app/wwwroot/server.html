@@ -419,6 +419,11 @@
         const startAtOsStartup = document.getElementById("startAtOsStartup");
         const startupStatusMessage = document.getElementById("startupStatusMessage");
 
+        function isConfigFormEditing() {
+            const active = document.activeElement;
+            return !!active && form.contains(active);
+        }
+
         function parseUrls(urls) {
             const raw = (urls || "").trim();
             const match = raw.match(/:(\d+)\s*$/);
@@ -525,7 +530,8 @@
             return data;
         }
 
-        async function loadPage() {
+        async function loadPage(options = {}) {
+            const { preserveEditing = false } = options;
             const [config, runtime, startup] = await Promise.all([
                 fetchJson("/api/server-config"),
                 fetchJson("/api/server-runtime?lines=180"),
@@ -536,7 +542,9 @@
                 }))
             ]);
 
-            applyConfigFields(config);
+            if (!(preserveEditing && isConfigFormEditing())) {
+                applyConfigFields(config);
+            }
             renderStatus(config, runtime);
             renderStartupSettings(startup);
             logConsole.textContent = Array.isArray(runtime.logLines) && runtime.logLines.length
@@ -655,7 +663,7 @@
 
         loadPage().catch(error => setMessage(error.message || "Could not load server page.", "error"));
         window.setInterval(() => {
-            loadPage().catch(() => {});
+            loadPage({ preserveEditing: true }).catch(() => {});
         }, 4000);
     </script>
 </body>

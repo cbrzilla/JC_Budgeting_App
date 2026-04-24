@@ -25,7 +25,6 @@ The desktop app is organized into these main tabs:
 - `Debts`
 - `Expenses`
 - `Transactions`
-- `Data`
 - `Settings`
 
 ## Getting Started
@@ -96,7 +95,7 @@ Typical workflow:
 
 1. Start the standalone JC Server.
 2. Open the server web page at `http://<server-host>:5099/server`.
-3. Create or select the active database on the server.
+3. Create or select the active database on the server (or upload an existing database to the server using the client).
 4. Open the desktop client.
 5. Set `Database Source` to `External Server`.
 6. Enter `Server Address` and `Port`.
@@ -140,6 +139,7 @@ The `Settings` tab includes a `Help` area where you can:
 - reopen the startup guided tour
 - check for client updates
 - open the client repository link for more information
+- open the support link
 
 ## Server Status And Compatibility
 When a server mode is active, JC Budgeting shows a server status indicator in the footer and related status text in the budget area.
@@ -287,8 +287,7 @@ Common fields include:
 
 - name
 - account type
-- category
-- starting balance
+- safety net
 - hidden
 - active
 - login link
@@ -396,17 +395,6 @@ Important import note:
 
 - JC Budgeting expects negative amounts as debits and positive amounts as credits
 - some financial institutions export data differently, so you may need to edit the file before import so it matches that format
-
-## Data Tab
-The `Data` tab is a raw read-only database inspection area.
-
-Use it to:
-
-- inspect database tables
-- review saved rows directly
-- confirm what was actually written to the database
-
-This is mainly useful for troubleshooting and advanced verification.
 
 ## Settings Tab
 The `Settings` tab controls connection mode, database actions, timeline settings, theme choices, and help.
@@ -521,7 +509,7 @@ Open the server page and create or select a database for the server.
 Reconnect to the server and use `Upload DB` from the client.
 
 ### I want to inspect the raw saved data
-Use the `Data` tab to inspect the database tables directly.
+Use logs, database backups, or the server/client troubleshooting tools to inspect what was saved.
 
 ### The client says there is a server version mismatch
 Update the client and/or server so the client meets the server's minimum compatible version requirements.
