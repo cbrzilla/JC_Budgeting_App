@@ -1,51 +1,22 @@
 ﻿# JC Budgeting Client Downloads
 
-JC Budgeting is a desktop budgeting application that helps you track, plan, and forecast your budget across accounts, income, expenses, savings, debts, transactions, budget sheets, and overview dashboards in one workspace.
+JC Budgeting is a desktop budgeting application that helps you track, plan, and forecast your budget across accounts, income, expenses, savings, debts, transactions, budget sheets, and overview dashboards in one workspace. When a JC Server is running, you can also connect from a mobile phone or web interface to view and make changes to the budget.
 
 JC Budgeting can be used in two main ways:
 
 - Local desktop use, where the data stays on the same computer
 - Client/server use, where the separate JC Budgeting Server hosts the database for other devices or computers
 
-This repo contains downloadable builds for the desktop client and the standalone server for each platform.
+This repo is structured to stay simple for end users: the downloadable app files live in the `releases/` folder, and the GitHub Releases page is the recommended place to download them.
 
-## Folder Layout
+## Recommended Download Method
 
-- `windows/`, `linux/`, `mac/`: platform-specific downloads
-- `<platform>/<arch>/manual/desktop`: portable/manual desktop files
-- `<platform>/<arch>/manual/server`: portable/manual server files
-- `<platform>/<arch>/installers`: installer packages for that platform
-- `mac/<arch>/`: archive-only Mac downloads (`.tar.xz`)
-- `others/`: reserved for future platforms
+- Go to the latest GitHub release: https://github.com/cbrzilla/JC_Budgeting_Client/releases/latest
+- Download the archive that matches your platform
+- Extract the archive on your computer
+- Follow the included platform README inside the archive
 
-## Windows
-
-- Installers are in `windows/x64/installers/`
-- Manual portable files are in `windows/x64/manual/desktop/` and `windows/x64/manual/server/`
-- To install, run `JCBudgeting-Client-Setup-<version>.exe` for the client and `JCBudgeting-Server-Setup-<version>.exe` for the server
-
-## Linux
-
-- Installers are in `linux/<arch>/installers/`
-- Manual portable files are in `linux/<arch>/manual/desktop/` and `linux/<arch>/manual/server/`
-- Ubuntu/Debian installs use the `.deb` packages
-- Example client install: `sudo apt install ./jcbudgeting-client_<version>_amd64.deb`
-- Example server install: `sudo apt install ./jcbudgeting-server_<version>_amd64.deb`
-- Manual desktop builds can also be launched directly, and the Linux desktop folder includes `Install JCBudgeting Launcher.sh` to register the app in the desktop menu
-
-## macOS
-
-- The `mac/` folder contains `arm64/` and `x64/` archive-only downloads
-- Available files are named like `JCBudgeting-client-<version>-mac-arm64.tar.xz` and `JCBudgeting-server-<version>-mac-arm64.tar.xz`
-- Extract the archive on the Mac, then launch `JCBudgeting.app` from the extracted client folder or run `start-server.command` from the extracted server folder
-- When downloading from GitHub, prefer the `.tar.xz` Mac archives or release assets instead of opening raw repo files, because raw LFS-backed files can download as pointer text instead of the real app binary
-- If cloning from GitHub, make sure Git LFS is installed and `git lfs pull` has been run before using the raw Mac app files
-
-## Help And Documentation
-
-- `USER_GUIDE.md`: detailed feature and usage guide
-- `LICENSE.md`: licensing information for this distribution
-- `THIRD_PARTY_NOTICES.md`: third-party package notices
+Each archive includes the files for that platform and architecture, plus a platform-specific README.
 
 ## Server Notes
 

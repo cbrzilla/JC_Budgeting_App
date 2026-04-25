@@ -1,0 +1,6 @@
+# JC Budgeting client-downloads local ignore rules
+#
+# Keep any manually created source-code release archives out of git by default.
+
+source-code-releases/
+!source-code-releases/.gitkeep
