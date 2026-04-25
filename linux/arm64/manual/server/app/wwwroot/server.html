@@ -516,7 +516,6 @@
                 ["Server Version", runtime?.serverVersion || "Unavailable", !!runtime?.serverVersion],
                 ["Primary Access", asLink(data.primaryAccessUrl), !!data.primaryAccessUrl, true],
                 ["Local Network", asLinkList(data.localAccessUrls, "Unavailable"), Array.isArray(data.localAccessUrls) && data.localAccessUrls.length > 0, true],
-                ["VPN / Tailscale", asLinkList(data.vpnAccessUrls, "None detected"), true, true],
                 ["Server Page", asLink(data.setupUrl), !!data.setupUrl, true],
                 ["Client Installation", '<a class="link" href="https://github.com/cbrzilla/JC_Budgeting_Client" target="_blank" rel="noreferrer">https://github.com/cbrzilla/JC_Budgeting_Client</a>', true, true],
                 ["Server Bind URL", data.urls || "n/a", true],
