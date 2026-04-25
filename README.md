@@ -15,6 +15,7 @@ This repo contains downloadable builds for the desktop client and the standalone
 - `<platform>/<arch>/manual/desktop`: portable/manual desktop files
 - `<platform>/<arch>/manual/server`: portable/manual server files
 - `<platform>/<arch>/installers`: installer packages for that platform
+- `mac/<arch>/archives`: Mac release archives (`.tar.xz`) that are safer to download than raw repo bundle files
 - `others/`: reserved for future platforms
 
 ## Windows
@@ -35,9 +36,11 @@ This repo contains downloadable builds for the desktop client and the standalone
 ## macOS
 
 - Installers are in `mac/<arch>/installers/`
+- Release-friendly archives are in `mac/<arch>/archives/`
 - Manual portable files are in `mac/<arch>/manual/desktop/` and `mac/<arch>/manual/server/`
 - Manual desktop builds include `JCBudgeting.app` for easier launching
 - The installer scripts can copy the client app into `~/Applications` and install the server as a LaunchAgent
+- When downloading from GitHub, prefer the `.tar.xz` Mac archives or release assets instead of opening raw repo files, because raw LFS-backed files can download as pointer text instead of the real app binary
 
 ## Help And Documentation
 
