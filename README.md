@@ -15,7 +15,7 @@ This repo contains downloadable builds for the desktop client and the standalone
 - `<platform>/<arch>/manual/desktop`: portable/manual desktop files
 - `<platform>/<arch>/manual/server`: portable/manual server files
 - `<platform>/<arch>/installers`: installer packages for that platform
-- `mac/`: archive-only Mac downloads (`.tar.xz`)
+- `mac/<arch>/`: archive-only Mac downloads (`.tar.xz`)
 - `others/`: reserved for future platforms
 
 ## Windows
@@ -35,7 +35,7 @@ This repo contains downloadable builds for the desktop client and the standalone
 
 ## macOS
 
-- The `mac/` folder contains archive downloads only
+- The `mac/` folder contains `arm64/` and `x64/` archive-only downloads
 - Available files are named like `JCBudgeting-client-<version>-mac-arm64.tar.xz` and `JCBudgeting-server-<version>-mac-arm64.tar.xz`
 - Extract the archive on the Mac, then launch `JCBudgeting.app` from the extracted client folder or run `start-server.command` from the extracted server folder
 - When downloading from GitHub, prefer the `.tar.xz` Mac archives or release assets instead of opening raw repo files, because raw LFS-backed files can download as pointer text instead of the real app binary
