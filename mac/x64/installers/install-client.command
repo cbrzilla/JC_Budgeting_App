@@ -6,4 +6,5 @@ DEST_DIR="$HOME/Applications"
 mkdir -p "$DEST_DIR"
 rm -rf "$DEST_DIR/JCBudgeting.app"
 cp -R "$SOURCE_APP" "$DEST_DIR/JCBudgeting.app"
+chmod +x "$DEST_DIR/JCBudgeting.app/Contents/MacOS/JCBudgeting" || true
 echo "Installed JC Budgeting to $DEST_DIR/JCBudgeting.app"

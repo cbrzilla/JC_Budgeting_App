@@ -23,3 +23,5 @@ Uninstall the server LaunchAgent:
     ./uninstall-server-launchagent.command
 
 Open http://localhost:5099/server after the server starts.
+
+If the app says it is not supported when opened directly from a copied folder, install it with install-client.command first so the executable permissions are restored inside ~/Applications/JCBudgeting.app.
